@@ -1,0 +1,51 @@
+{%extends 'cheques/base.html' %}
+{%block title%}Agregar un Distribuidor{%endblock title%}
+
+
+{%block content %}
+
+{%if form.errors%}
+<div class="alert alert-danger" role="alert">
+Hubo un Error en el Formulario
+</div>
+{%endif%}
+
+<!-- <section class="content"> -->
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Registrar un Distribuidor</h2>
+        </div>
+        <!-- Input -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Por favor llena el siguiente formulario
+                            <small>los datos con (*) son necesarios</small>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form action="{%url "crear_distribuidor"%}" method="POST">
+                          {%csrf_token%}
+                        <h2 class="card-inside-title">Informacion del Distribuidor</h2>
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" name="nombre" class="form-control" placeholder="Nombre" autocomplete="off" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Guardar!</button>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{%endblock content%}
