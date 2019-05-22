@@ -1,19 +1,19 @@
 {%extends 'cheques/base.html' %}
-{%block title%}Agregar una Institucion{%endblock title%}
+{%block title%}Asociar un Banco{%endblock title%}
 
 
 {%block content %}
 
 {%if form.errors%}
 <div class="alert alert-danger" role="alert">
-Hubo un Error en el Formulario
+*Hubo un Error en el Formulario / *Revisa la informacion ingresada
 </div>
 {%endif%}
 
 <!-- <section class="content"> -->
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Registrar una agencia Bancaria</h2>
+
         </div>
         <!-- Input -->
         <div class="row clearfix">
@@ -21,19 +21,19 @@ Hubo un Error en el Formulario
                 <div class="card">
                     <div class="header">
                         <h2>
-                            Por favor llena el siguiente formulario
-                            <small>los datos con (*) son necesarios</small>
+                                Asocia un Banco
+                            <small>tener bancos asociados te ayudara a las proximas cuentas personales que asocies</small>
                         </h2>
                     </div>
                     <div class="body">
                         <form action="{%url "crear_institucion"%}" method="POST">
                           {%csrf_token%}
-                        <h2 class="card-inside-title">Informacion de la Institucion</h2>
+                        <h2 class="card-inside-title">Informacion del Banco</h2>
                         <div class="row clearfix">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="institucion" class="form-control" placeholder="Nombre" autocomplete="off" />
+                                        <input type="text" name="institucion" class="form-control" placeholder="Nombre del Banco" autocomplete="off" />
                                     </div>
                                 </div>
                             </div>

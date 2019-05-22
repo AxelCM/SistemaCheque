@@ -148,10 +148,25 @@
                             <span>Inicio</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">local_atm</i>
+                            <span>Cheques</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{%url "crear_cheque"%}">Agregar un Cheque</a>
+                            </li>
+                            <li>
+                                <a href="{%url "ver_cheques"%}">Ver Cheques Emitidos</a>
+                            </li>
+
+                        </ul>
+                    </li>
 
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">view_list</i>
+                            <i class="material-icons">contacts</i>
                             <span>Distribuidores</span>
                         </a>
                         <ul class="ml-menu">
@@ -166,30 +181,31 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Instituciones Bancarias</span>
+                            <i class="material-icons">attach_money </i>
+                            <span>Bancos</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{%url "crear_institucion"%}">Agregar Institucion</a>
+                                <a href="{%url "crear_institucion"%}">Agregar Banco</a>
                             </li>
                             <li>
-                                <a href="{%url "ver_institucion"%}">Ver Institucion</a>
+                                <a href="{%url "ver_institucion"%}">Ver Bancos</a>
                             </li>
 
                         </ul>
                     </li>
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">assignment</i>
-                            <span>Cheques</span>
+                            <i class="material-icons">book</i>
+                            <span>Administrar Cuentas</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="{%url "crear_distribuidor"%}">Agregar un Distribuidor</a>
+                                <a href="{%url "crear_cuenta"%}">Asociar una Cuenta Bancaria</a>
                             </li>
                             <li>
-                                <a href="{%url "distribuidor_client"%}">Ver Distribuidores</a>
+                                <a href="{%url "ver_cuentas"%}">Ver Cuentas Asociadas</a>
                             </li>
 
                         </ul>
@@ -247,7 +263,8 @@
     <script src="{%static "plugins/bootstrap/js/bootstrap.js"%}"></script>
 
     <!-- Select Plugin Js -->
-    <script src="{% static "plugins/bootstrap-select/js/bootstrap-select.js"%}"></script>
+
+    <!-- <script src="{% static "plugins/bootstrap-select/js/bootstrap-select.js" %}" ></script> -->
 
     <!-- Slimscroll Plugin Js -->
     <script src="{% static "plugins/jquery-slimscroll/jquery.slimscroll.js"%}"></script>

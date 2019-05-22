@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cheques.models import Institucion_Bancaria , Distribuidor , Chequera
+from cheques.models import Institucion_Bancaria , Distribuidor , Chequera , CuentasBancarias
 
 # Register your models here.
 class ChequesAdmin(admin.ModelAdmin):
@@ -17,6 +17,10 @@ class InstitucionAdmin(admin.ModelAdmin):
     search_fields = ['id_institucion' , 'institucion']
     list_display = ['id_institucion' , 'institucion']
 
+class CuentasBancariasAdmin(admin.ModelAdmin):
+    list_display = ['num' , 'banco' ,'titular']
+
 admin.site.register(Chequera , ChequesAdmin)
 admin.site.register(Distribuidor, DistribuidorAdmin)
 admin.site.register(Institucion_Bancaria , InstitucionAdmin)
+admin.site.register(CuentasBancarias , CuentasBancariasAdmin)
