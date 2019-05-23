@@ -34,7 +34,7 @@ class Chequera(models.Model):
     fecha_creado = models.DateField('Fecha de elaboracion' , auto_now_add=True)
     fecha_pago = models.DateField('Fecha a Pagar' , blank=True )
     observacion = models.TextField('Observaciones' , blank=True)
-    imge_cheque = models.ImageField(upload_to='cheque/pictures')
+    imge_cheque = models.ImageField(upload_to='cheques/pictures')
     # institucion_bancaria = models.ForeignKey(Institucion_Bancaria , on_delete=models.CASCADE)
     distribuidor = models.ForeignKey(Distribuidor , on_delete=models.CASCADE)
     cuenta_bancaria = models.ForeignKey(CuentasBancarias , on_delete=models.CASCADE)

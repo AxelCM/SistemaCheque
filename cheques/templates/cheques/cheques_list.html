@@ -2,12 +2,16 @@ distribuidor{%extends 'cheques/base.html' %}
 {%block title%}Lista de Clientes{%endblock title%}
 
 {%block content %}
-<h1 align="center">DISTRIBUIDORES REGISTRADOS</h1>
-{% if messages %}
-  <ul class="messages">
-    {%include "productos/mensajes.html"%}
-  </ul>
-{% endif %}
+<h1 align="center">Cheques emitidos</h1>
+{%if messages%}
+<div class="col col-sm-4">
+<div class="alert alert-success">
+    {% for m in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+    {% endfor %}
+  </div>
+</div>
+{%endif%}
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -20,7 +24,7 @@ distribuidor{%extends 'cheques/base.html' %}
       <th scope="col">Emision del Cheque</th>
       <th scope="col">Distribuidor </th>
       <th scope="col">Cuenta Origen</th>
-      <th scope="col"><a  class="btn btn-primary" href="#">+</a></th>
+      <th scope="col"><a  class="btn btn-primary" href="{%url "crear_cheque"%}">+</a></th>
     </tr>
   </thead>
   <tbody>
@@ -31,7 +35,7 @@ distribuidor{%extends 'cheques/base.html' %}
       <td>{{chequera.fecha_pago}}</td>
       <td>{{chequera.distribuidor}}</td>
       <td>{{chequera.cuenta_bancaria}}</td>
-      <td><a class="btn btn-outline-secondary" href="#">E</a> <a class="btn btn-outline-secondary" href="#">+</a></td>
+      <td><a class="btn btn-outline-secondary" href="{%url "update_cheque" chequera.id_chequera%}">E</a> </td>
     </tr>
     {%endfor%}
   </tbody>

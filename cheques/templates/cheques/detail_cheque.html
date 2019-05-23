@@ -1,0 +1,45 @@
+{%extends 'cheques/base.html' %}
+{%block title%}Detalle Cheque{%endblock title%}
+{%load static%}
+
+{%block content %}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+      <div class="row">
+        {% if cheque.imge_cheque %}
+        <img class="rounded" src="{{cheque.imge_cheque.url}}" width="800px" height="450px" />
+        {% else%}
+        <img class="rounded" src="{% static 'cheques/img/default.png' %}" width="450px" height="450px" />
+        {%endif%}
+      </div>
+<br><br>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">No. Cheque</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Emision del Cheque</th>
+              <th scope="col">Pagado A </th>
+              <th scope="col">Cuenta Origen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{cheque.No_Cheque}}</td>
+              <td>Q.{{cheque.total}}</td>
+              <td>{{cheque.fecha_pago}}</td>
+              <td>{{cheque.distribuidor}}</td>
+              <td>{{cheque.cuenta_bancaria}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><b>Razon del Pago:</b> {{cheque.observacion}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock content%}

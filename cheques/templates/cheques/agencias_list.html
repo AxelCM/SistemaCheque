@@ -3,11 +3,16 @@ distribuidor{%extends 'cheques/base.html' %}
 
 {%block content %}
 <h1 align="center">INSTITUCIONES BANCARIAS REGISTRADAS</h1>
-{% if messages %}
-  <ul class="messages">
-    {%include "productos/mensajes.html"%}
-  </ul>
-{% endif %}
+{%if messages%}
+<div class="col col-sm-4">
+<div class="alert alert-success">
+    {% for m in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+    {% endfor %}
+  </div>
+</div>
+{%endif%}
+
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -35,7 +40,7 @@ distribuidor{%extends 'cheques/base.html' %}
       <td>{{cliente.telefono}}</td>
       <td>{{cliente.direccion}}</td>
       <td>{{cliente.email}}</td> -->
-      <td><a class="btn btn-outline-secondary" href="#">Editar</a></td>
+      <td><a class="btn btn-outline-secondary" href="{%url "update_bancos" agencias.id_institucion%}">E</a></td>
     </tr>
     {%endfor%}
   </tbody>

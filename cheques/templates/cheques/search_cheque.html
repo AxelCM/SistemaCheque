@@ -1,0 +1,80 @@
+{%extends 'cheques/base.html' %}
+{%block title%}Buscar Cheque{%endblock title%}
+{%load static%}
+{%block navbar%}
+
+
+{%endblock navbar%}
+{%block search_bar%}
+
+{%endblock search_bar%}
+
+{%block content %}
+<h1 align='center'>Busqueda de cheque</h1>
+<h3>Filtrar por fecha:</h3>
+<br>
+<form class="form-inline" action="{%url "search_cheque"%}" method="GET" autocomplete="off">
+	<input class="form-control mr-sm-2" type="date"  name="q" size=50% value="{{ query|escape }}">
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+</form>
+
+
+
+{% if query %}
+  {% if results%}
+  <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card">
+              <div class="header">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">No. Cheque</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Monto</th>
+        <th scope="col">Emision del Cheque</th>
+        <th scope="col">Distribuidor </th>
+        <th scope="col">Cuenta Origen</th>
+        <th scope="col"><a  class="btn btn-primary" href="{%url "crear_cheque"%}">+</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for chequera in results%}
+      <tr>
+        <td>{{chequera.No_Cheque}}</td>
+        {%if chequera.imge_cheque%}
+        <td>
+        <a href="{{chequera.imge_cheque.url}}" target="_blank">
+        <img src="{{chequera.imge_cheque.url}}" align="center" height="40" width="95" class="d-inline-block align-top "/>
+      </td>
+        {%else%}
+        <td>
+        <img src="{%static "cheques/img/default.png" %}" align="center" height="40" width="95" class="d-inline-block align-top"/>
+        </td>
+        {%endif%}
+
+        <td>Q.{{chequera.total}}</td>
+        <td>{{chequera.fecha_pago}}</td>
+        <td>{{chequera.distribuidor}}</td>
+        <td>{{chequera.cuenta_bancaria}}</td>
+        <td>
+					<a class="material-icons" href="{%url "detail_cheque" chequera.id_chequera%}" target="_blank">inbox</a>-
+					<a class="material-icons" href="{%url "update_cheque" chequera.id_chequera%}">mode_edit</a>
+				</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+{% else %}
+<br>
+<div class="alert alert-warning" role="alert">
+  <h4>Lo Sentimos</h4> No se encontraron despachos para la fecha <b>"{{query}}" o el pedido siguen sin finalizar</b>
+</div>
+
+
+{% endif %}
+{% endif %}
+
+
+
+{%endblock content%}

@@ -1,0 +1,132 @@
+{%extends 'cheques/base.html' %}
+{%block title%}Editar un Cheque{%endblock title%}
+{% load staticfiles %}
+
+{%block content %}
+
+{%if form.errors%}
+<div class="alert alert-danger" role="alert">
+Hubo un Error en el Formulario
+  <p>{{ field.errors }}</p>
+</div>
+{%endif%}
+<div class="container-fluid">
+  <div class="alert alert-warning" role="alert">
+    <h4>Advertencia</h4>Estas a punto de Modificar un cheque : <br> <b></b>
+  </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <small></small>
+                        </h2>
+                    </div>
+                  <div class="body">
+                    <h2 class="card-inside-title">Numero de Cheque</h2>
+                      <form action="{%url "update_cheque" object.id_chequera%}" method="POST" enctype="multipart/form-data">
+                        {%csrf_token%}
+                              <div class="form-group">
+                                    <div class="form-line">
+                                      <input type="text" name="No_Cheque" class="form-control" value="{{object.No_Cheque}}" autocomplete="off" />
+                                    </div>
+                              </div>
+                              <h2 class="card-inside-title">Monto del Cheque Q.</h2>
+                              <div class="form-group">
+                                  <div class="form-line">
+                                        <input type="text" name="total" class="form-control" value="{{object.total}}" autocomplete="off" />
+                                  </div>
+                              </div>
+                              <h2 class="card-inside-title">Fecha de emision del Cheque</h2>
+                              <small>Valor Actual: {{object.fecha_pago}}</small>
+                              <div class="form-group">
+                                  <div class="form-line">
+                                      <input type="date"name="fecha_pago" value="{{object.fecha_pago}}"  class="form-control" required="required"/>
+
+                                  </div>
+
+                              </div>
+                              <h2 class="card-inside-title">Razon del Cheque</h2>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                      <textarea class="form-control" rows="5" id="comment" name="observacion" >{{object.observacion}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    {% if object.imge_cheque %}
+                                      <a href="{{object.imge_cheque.url}}"  target="_blank">
+                                        <img src="{{ object.imge_cheque.url }}" class="rounded-circle" height="50" />
+                                    {% else%}
+                                        <img src="{% static 'cheques/img/default.png' %}" class="rounded-circle" height="50" />
+                                    {% endif %}
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="ml-4">Actualizar Foto del Cheque</h5>
+                                        <p class="ml-4"><input type="file"  name="imge_cheque"></p>
+                                    </div>
+                                </div>
+
+                               <br>
+                                  <label>Banco:</label>
+                                  <select class="form-control" value="{{object.banco}}" name="cuenta_bancaria">
+                                    {%for cuenta in cuentas%}
+                                    <option value="{{cuenta.pk}}"
+                                      {%if object.cuenta_bancaria.id_cuenta == cuenta.id_cuenta%} selected="selected" {%endif%} >
+                                      {{cuenta|capfirst}}
+                                    </option>
+                                    {%endfor%}
+                                  </select>
+                                    <br>
+
+                                  <label>Distribuidor:</label>
+                                  <select class="form-control" value="{{object.distribuidor}}" name="distribuidor">
+                                    {%for dist in distribuidores%}
+                                    <option value="{{dist.pk}}"
+                                      {%if object.distribuidor.nombre == dist.nombre%} selected="selected" {%endif%} >
+                                      {{dist.nombre|capfirst}}
+
+                                    </option>
+                                    {%endfor%}
+                                  </select>
+
+                                  <!-- <label>Categoria del Producto</label>
+                                  <select class="form-control"  value="{{object.categoria}}" name="categoria">
+                                  {% for org in categorias %}
+                                     <option value="{{org.pk}}"
+                                         {% if object.categoria.nombre == org.nombre %}selected="selected"{% endif %}>
+                                         {{org.nombre|capfirst}}
+                                     </option>
+                                  {% endfor %} -->
+
+
+                                  <!-- <br>
+                                    <label>Cuenta de Origen:</label>
+                                    <select class="form-control"  name="cuenta_bancaria">
+                                      {%for cuenta in cuentas%}
+                                      <option value="{{cuenta.id_cuenta}}" >{{cuenta.banco}} - {{cuenta.num}} - {{cuenta.titular}}</option>
+                                      {%endfor%}
+                                    </select> -->
+
+
+
+
+                              <button  type="submit" class="btn btn-primary m-t-15 waves-effect">Guardar!</button>
+                              </form>
+                            </div>
+                    </div>
+                          </div>
+                  </div>
+                        </div>
+                      </div>
+                      </div>
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{%endblock content%}
