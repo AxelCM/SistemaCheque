@@ -1,5 +1,5 @@
 distribuidor{%extends 'cheques/base.html' %}
-{%block title%}Lista de Clientes{%endblock title%}
+{%block title%}Lista de Bancos{%endblock title%}
 
 {%block content %}
 <h1 align="center">INSTITUCIONES BANCARIAS REGISTRADAS</h1>
@@ -28,6 +28,10 @@ distribuidor{%extends 'cheques/base.html' %}
       <th scope="col">DIRECCION</th>
       <th scope="col">CORREO ELECTORNICO </th> -->
       <th scope="col"><a  class="btn btn-primary" href="{%url "crear_institucion"%}">+</a></th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
     </tr>
   </thead>
   <tbody>
